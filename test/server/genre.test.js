@@ -7,12 +7,13 @@ describe('genre controller tests', () => {
     request
       .post('/api/genres')
       .send({
-        title: 'Horror'
+        title: 'Sci-Fi'
       })
-      .end((res, err) => {
+      .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body).to.be.defined();
-        expect(res.body.title).to.equal('Horror');
+        expect(res.body).to.exist;
+        expect(res.body.title).to.equal('Sci-Fi');
+        done();
       })
   })
 
@@ -22,20 +23,22 @@ describe('genre controller tests', () => {
       .send({
         title: 'Horror'
       })
-      .end((res, err) => {
+      .end((err, res) => {
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal('name must be unique');
+        expect(res.body.message).to.equal('Duplicate Entry');
+        done();
       })
   })
 
   it('returns a list of genres', (done) => {
     request
       .get('/api/genres')
-      .end((res, err) => {
+      .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body).to.be.defined();
+        expect(res.body).to.exist;
         expect(Array.isArray(res.body)).to.be.true;
-        expect(res.body.length).to.be.true;
+        expect(res.body).to.have.length(4);
+        done();
       })
   })
 })
