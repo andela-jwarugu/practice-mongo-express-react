@@ -13,7 +13,7 @@ if(env === 'testing'){
   DB_URI = 'mongodb://localhost/practice-mongo-express-react-dev';
 }
 
-mongoose.Promise = global.Promise; 
+mongoose.Promise = global.Promise;
 mongoose.connect(DB_URI, function(err) {
   if(err){
     console.log('Error occured: ', err);
