@@ -10,8 +10,9 @@ const movieSchema = new Schema({
   },
   genre: {
     type: Schema.Types.ObjectId,
-    ref: 'Genre'
+    ref: 'Genre',
+    required: true
   }
 })
 
-const Movie = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Movie', movieSchema);

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const app = require('../../../server');
+const app = require('../../server');
 const request = require('supertest')(app);
 
 describe('genre controller tests', () => {

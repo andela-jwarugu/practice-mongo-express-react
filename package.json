@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
+    "pretest": "node server/utils/dropdb.js && node server/utils/createdb.js",
     "test": "export NODE_ENV=testing; mocha --compilers js:babel-core/register test/server/**/*.test.js"
   },
   "repository": {
